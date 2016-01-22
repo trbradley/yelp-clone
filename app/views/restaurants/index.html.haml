@@ -1,6 +1,7 @@
 - if @restaurants.any?
   - @restaurants.each do |restaurant|
     %h2= link_to restaurant.name, restaurant_path(restaurant)
+    = image_tag restaurant.image.url(:thumb)
     %h3 Average rating: #{star_rating(restaurant.average_rating)}
     = link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
     = link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete
@@ -26,4 +27,4 @@
 
 %br
 
-%a{ href: new_restaurant_path } Add a restaurant
+= link_to "Add a restaurant", new_restaurant_path
